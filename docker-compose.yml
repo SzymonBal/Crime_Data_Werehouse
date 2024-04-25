@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: mssql-server
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "YourStrongPassword123"  # Ustaw hasło administratora (SA)
+      ACCEPT_EULA: "Y"  # Potwierdź akceptację warunków licencji
+    volumes:
+      - mssql-data:/var/opt/mssql
+
+
+volumes:
+  mssql-data:
+    driver: local
