@@ -15,9 +15,8 @@ conn = pyodbc.connect(conn_str)
 conn.autocommit = True
 # Utworzenie kursora
 cursor = conn.cursor()
-
 # Polecenie SQL CREATE DATABASE
-create_db_query = "CREATE DATABASE After_ETL"
+create_db_query = "CREATE DATABASE AFTER_ETL_CRIME_LA"
 
 # Wykonanie polecenia
 cursor.execute(create_db_query)
