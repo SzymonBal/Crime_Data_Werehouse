@@ -12,12 +12,12 @@ conn_str = f'DRIVER={driver};SERVER={server};DATABASE={database};UID={username};
 
 # Nawiązanie połączenia
 conn = pyodbc.connect(conn_str)
-
+conn.autocommit = True
 # Utworzenie kursora
 cursor = conn.cursor()
 
 # Polecenie SQL CREATE DATABASE
-create_db_query = "CREATE DATABASE NowaBazaDanych2"
+create_db_query = "CREATE DATABASE ETL"
 
 # Wykonanie polecenia
 cursor.execute(create_db_query)
