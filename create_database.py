@@ -16,7 +16,9 @@ conn.autocommit = True
 # Utworzenie kursora
 cursor = conn.cursor()
 # Polecenie SQL CREATE DATABASE
-create_db_query = "CREATE DATABASE AFTER_ETL_CRIME_LA"
+
+create_db_query = "CREATE DATABASE ETL"
+
 
 # Wykonanie polecenia
 cursor.execute(create_db_query)
