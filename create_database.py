@@ -15,9 +15,10 @@ conn = pyodbc.connect(conn_str)
 conn.autocommit = True
 # Utworzenie kursora
 cursor = conn.cursor()
-
 # Polecenie SQL CREATE DATABASE
+
 create_db_query = "CREATE DATABASE ETL"
+
 
 # Wykonanie polecenia
 cursor.execute(create_db_query)
@@ -29,4 +30,4 @@ conn.commit()
 cursor.close()
 conn.close()
 
-print("Baza danych NowaBazaDanych2 została utworzona.")
+print("Baza danych Clean_Database_1 została utworzona.")
