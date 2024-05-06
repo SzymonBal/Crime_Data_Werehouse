@@ -12,12 +12,11 @@ conn_str = f'DRIVER={driver};SERVER={server};DATABASE={database};UID={username};
 
 # Nawiązanie połączenia
 conn = pyodbc.connect(conn_str)
-
+conn.autocommit = True
 # Utworzenie kursora
 cursor = conn.cursor()
-
 # Polecenie SQL CREATE DATABASE
-create_db_query = "CREATE DATABASE NowaBazaDanych2"
+create_db_query = "CREATE DATABASE AFTER_ETL_CRIME_LA"
 
 # Wykonanie polecenia
 cursor.execute(create_db_query)
@@ -29,4 +28,4 @@ conn.commit()
 cursor.close()
 conn.close()
 
-print("Baza danych NowaBazaDanych2 została utworzona.")
+print("Baza danych Clean_Database_1 została utworzona.")
