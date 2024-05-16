@@ -7,3 +7,5 @@ venv/
 .local/
 .venv/
 .yarn/
+.ipynb_checkpoints/
+*.csv

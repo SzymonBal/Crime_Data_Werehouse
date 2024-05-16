@@ -43,4 +43,4 @@ def load_data_to_database(database_name, csv_file_path, server='localhost', user
 # Przykładowe użycie funkcji
 database_name = 'BAZUNIA2'
 csv_file_path = 'LA_crimes_generate_data.csv'
-#load_data_to_database(database_name, csv_file_path)
+load_data_to_database(database_name, csv_file_path)

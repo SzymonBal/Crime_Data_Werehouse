@@ -22,12 +22,13 @@ services:
       - JUPYTER_TOKEN=""
     ports:
       - "8888:8888" # Port dla Jupyter
-      - "8501:8501" # Dodatkowy port dla Streamlit
+      - "8502:8502" # Dodatkowy port dla Streamlit
     command: start-notebook.sh --NotebookApp.token=''
     volumes:
       - ./mssql-jdbc-12.6.1.jre8.jar:/app/mssql-jdbc-12.6.1.jre8.jar
       - .:/home/jovyan  # Mapowanie całego aktualnego katalogu do kontenera
       - ./init.sql:/app/init.sql
+
 
 
 volumes:
