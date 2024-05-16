@@ -1,0 +1,11 @@
+venv/
+.cache/
+.atoti/
+.ipython/
+.jupyter/
+.npm/
+.local/
+.venv/
+.yarn/
+.ipynb_checkpoints/
+*.csv
