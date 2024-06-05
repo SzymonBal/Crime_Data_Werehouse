@@ -37,3 +37,9 @@ python dash1.py
 python dash1.py
 pip install pyglet pygwalk
 pip install pygwalker --upgrade
+python da.py
+pip install dash
+python da.py
+python da.py
+pip install xgboost
+ip install dash_bootstrap_components
