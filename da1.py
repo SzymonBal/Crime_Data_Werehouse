@@ -29,6 +29,20 @@ app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 # Definiowanie layoutu aplikacji Dash
 app.layout = dbc.Container([
     html.H1(children='Dashboard Incydentów Kryminalnych'),
+
+    dcc.Dropdown(
+        id='area-dropdown',
+        options=[{'label': area, 'value': area} for area in df['AREA NAME'].unique()],
+        value=df['AREA NAME'].unique().tolist(),
+        multi=True,
+        placeholder='Wybierz nazwę obszaru'
+    ),
+
+    dbc.Row([
+        dbc.Col(dcc.Graph(id='age-gender-bar-graph'), width=6),
+        dbc.Col(dcc.Graph(id='bar-graph'), width=6),
+        
+    ]),
     
     dcc.Checklist(
         id='grouping-options',
@@ -42,26 +56,25 @@ app.layout = dbc.Container([
             {'label': 'Wiek przestępcy', 'value': 'age of criminal'},
         ],
         value=['Year', 'Quarter', 'age of criminal'],
-        inline=True
+        inline=True,
     ),
 
 
     
-    dbc.Row([
-        dbc.Col(dcc.Graph(id='sunburst-graph'), width=6),
-        dbc.Col(dcc.Graph(id='bar-graph'), width=6),
-    ]),
-        dcc.Dropdown(
-        id='area-dropdown',
-        options=[{'label': area, 'value': area} for area in df['AREA NAME'].unique()],
-        value=df['AREA NAME'].unique().tolist(),
-        multi=True,
-        placeholder='Wybierz nazwę obszaru'
-    ),
+    
+        
 
     dbc.Row([
-        dbc.Col(dcc.Graph(id='age-gender-bar-graph'), width=6),
-        dbc.Col(html.Div(id='forecast-graph-container'), width=6)
+        dbc.Col(dcc.Graph(id='sunburst-graph'), width=6,),
+        dbc.Col(html.Div(id='forecast-graph-container1'), width=6),
+        
+        
+    ]),
+    dbc.Row([
+        
+        dbc.Col(html.Div(id='forecast-graph-container2'), width=4),
+        dbc.Col(html.Div(id='forecast-graph-container3'), width=4),
+        dbc.Col(html.Div(id='forecast-graph-container4'), width=4),
     ]),
 
     
@@ -102,12 +115,37 @@ def update_age_gender_bar(selected_groupings, selected_areas):
     return fig_age_gender_bar
 
 # Aktualizacja wykresu z HTML
+
 @app.callback(
-    Output('forecast-graph-container', 'children'),
+    Output('forecast-graph-container1', 'children'),
     Input('grouping-options', 'value')
 )
 def update_forecast_graph(selected_groupings):
-    with open('forecast_plot.html', 'r', encoding='utf-8') as f:
+    with open('forecast_plot1_1.html', 'r', encoding='utf-8') as f:
+        plot_html = f.read()
+    return html.Iframe(srcDoc=plot_html, style={"width": "100%", "height": "600px"})
+@app.callback(
+    Output('forecast-graph-container2', 'children'),
+    Input('grouping-options', 'value')
+)
+def update_forecast_graph(selected_groupings):
+    with open('forecast_plot1_2.html', 'r', encoding='utf-8') as f:
+        plot_html = f.read()
+    return html.Iframe(srcDoc=plot_html, style={"width": "100%", "height": "600px"})
+@app.callback(
+    Output('forecast-graph-container3', 'children'),
+    Input('grouping-options', 'value')
+)
+def update_forecast_graph(selected_groupings):
+    with open('forecast_plot1_3.html', 'r', encoding='utf-8') as f:
+        plot_html = f.read()
+    return html.Iframe(srcDoc=plot_html, style={"width": "100%", "height": "600px"})
+@app.callback(
+    Output('forecast-graph-container4', 'children'),
+    Input('grouping-options', 'value')
+)
+def update_forecast_graph(selected_groupings):
+    with open('forecast_plot1_4.html', 'r', encoding='utf-8') as f:
         plot_html = f.read()
     return html.Iframe(srcDoc=plot_html, style={"width": "100%", "height": "600px"})
 
